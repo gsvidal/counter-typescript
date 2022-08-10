@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { Counter } from './components/Counter';
 
 function App() {
+  const [counter, setCounter] = useState<number>(0);
+
+  const addHandler = () => {
+    setCounter((counter) => {
+      return (counter += 1);
+    });
+  };
+
+  const substractHandler = () => {
+    setCounter((counter) => {
+      return (counter -= 1);
+    });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Counter App</h1>
+      <Counter
+        counter={counter}
+        onAdd={addHandler}
+        onSubstract={substractHandler}
+      />
     </div>
   );
 }
