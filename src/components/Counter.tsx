@@ -2,17 +2,18 @@ export const Counter: React.FC<{
   counter: number;
   onAdd: () => void;
   onSubstract: () => void;
-}> = (props) => {
+  inputValue: number;
+}> = ({ counter, onAdd, onSubstract, inputValue }) => {
   return (
     <>
       <p>
-        Counter: <span>{props.counter}</span>
+        Counter: <span>{counter}</span>
       </p>
-      <button type="button" onClick={props.onAdd}>
-        Add 1
+      <button type="button" onClick={onSubstract}>
+        Substract {inputValue}
       </button>
-      <button type="button" onClick={props.onSubstract}>
-        Substract 1
+      <button type="button" onClick={onAdd}>
+        Add {inputValue}
       </button>
     </>
   );
